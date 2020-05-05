@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TP2Loguin</string>
+
+    /*loguin*/
+    <string name="inicio">Bienvenido</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrar">Registrarse</string>
+
+
+    /*registro*/
+
+
+    /*mi Perfil*/
+
+
+    /*todo los perfiles*/
+
+
+    /*activity web*/
+
+</resources>
