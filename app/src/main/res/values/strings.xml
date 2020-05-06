@@ -7,6 +7,9 @@
     <string name="contraseña">Contraseña</string>
     <string name="ingresar">Ingresar</string>
     <string name="registrar">Registrarse</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
+    <string name="tab_text_1">Mi Perfil</string>
+    <string name="tab_text_2">Todos los Perfiles</string>
 
 
     /*registro*/
