@@ -17,12 +17,12 @@
         android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/inicio"
-        android:textSize="30dp"
+        android:textSize="30sp"
         />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="40dp" />
 
     <EditText
         android:id="@+id/editText"
@@ -30,19 +30,22 @@
         android:layout_height="79dp"
         android:layout_gravity="center_horizontal"
         android:inputType="textPersonName"
-        />
+        android:autofillHints="false"
+        android:hint="@string/usuario"
+        tools:ignore="LabelFor" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp" />
 
     <EditText
+        android:hint="@string/contrasenia"
         android:id="@+id/editText2"
         android:layout_width="271dp"
         android:layout_height="79dp"
         android:layout_gravity="center_horizontal"
         android:inputType="textPassword"
-        />
+        android:importantForAutofill="no" />
 
     <Space
         android:layout_width="match_parent"
@@ -56,7 +59,7 @@
         >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnIngresar"
             android:layout_width="125dp"
             android:layout_height="65dp"
             android:onClick="iniciar"
@@ -65,10 +68,10 @@
         <Space
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+             />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnRegistroActivityMain"
             android:layout_width="125dp"
             android:layout_height="65dp"
             android:onClick="registrar"
