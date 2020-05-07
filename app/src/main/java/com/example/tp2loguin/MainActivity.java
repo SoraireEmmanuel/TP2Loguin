@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ConexionSQLiteHelper conex=new ConexionSQLiteHelper(this, "bd_usuario", null,1);
     }
     public void registrar(View v) {
         Intent registro = new Intent(this, Registro.class);

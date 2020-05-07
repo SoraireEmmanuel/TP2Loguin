@@ -89,10 +89,11 @@
         android:importantForAutofill="no" />
 
     <Button
-        android:padding="10dp"
         android:id="@+id/btnRegistroForm"
         android:layout_width="250dp"
         android:layout_height="60dp"
+        android:onClick="onClick"
+        android:padding="10dp"
         android:text="@string/registrar" />
 
 </LinearLayout>

@@ -3,8 +3,10 @@ package com.example.tp2loguin;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -16,9 +18,14 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+
+import com.example.tp2loguin.utilidades.Utilidades;
 
 import java.io.File;
 public class Registro extends Activity {
@@ -26,6 +33,11 @@ public class Registro extends Activity {
     ImageView imagen;
     Spinner spiner;
     String path;
+    EditText campoDNI;
+    EditText campoNombre;
+    EditText campoApellido;
+    EditText campoContrasenia;
+    EditText campoEmail;
 
     private final String CARPETA_RAIZ="misImagenes/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
@@ -38,15 +50,51 @@ public class Registro extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
 
+        //REGISTRO LA IMAGEN DEL FORMULARIO EN LA CONSTANTE imagen
         imagen=(ImageView)findViewById(R.id.imagenId);
+
+        //REGISTRO EL SPINNER EN LA VARIABLE spiner PARA MANIPULAR SI VISUALIZACION
         spiner=(Spinner)findViewById(R.id.spinner);
         String [] opciones = {"CEO","Director","Administrador","Jefe o Supervisor", "Empleado"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item, opciones);
         spiner.setPrompt("Seleccione su Rol");
         spiner.setAdapter(adapter);
+
+        //REGISTRO EL RESTO DE LOS CAMPOS PARA SU CARGA EN LA BASE DE DATOS
+        campoDNI=(EditText)findViewById(R.id.usuarioDni);
+        campoNombre = (EditText)findViewById(R.id.nombre);
+        campoApellido = (EditText)findViewById(R.id.apellido);
+        campoContrasenia =(EditText)findViewById(R.id.contrasenia);
+        campoEmail = (EditText)findViewById(R.id.email);
+
        }
 
+    //metoos para la insercion en base de dato de un nuevo usuario
 
+    public void onClick(View view){
+        resgistrarUsuario();
+    }
+
+    private void resgistrarUsuario() {
+        ConexionSQLiteHelper conex = new ConexionSQLiteHelper(this, "bd_usuario", null, 1);
+        SQLiteDatabase db=conex.getWritableDatabase();
+
+        ContentValues values=new ContentValues();
+        values.put(Utilidades.CAMPO_DNI,campoDNI.getText().toString());
+        values.put(Utilidades.CAMPO_NOMBRE,campoNombre.getText().toString());
+        values.put(Utilidades.CAMPO_APELLIDO,campoApellido.getText().toString());
+        values.put(Utilidades.CAMPO_ROL,spiner.getAdapter().toString());
+        values.put(Utilidades.CAMPO_CONTRASENIA,campoContrasenia.getText().toString());
+        values.put(Utilidades.CAMPO_EMAIL,campoEmail.getText().toString());
+       // values.put(Utilidades.CAMPO_FOTO,imagen. recuperar el uri de la imagen);
+
+        Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_DNI,values);
+
+        Toast.makeText(getApplicationContext(),"DNI registro:"+idResultante,Toast.LENGTH_SHORT).show();
+    }
+
+
+    //metodos para la carga de foto para versiones de android 5.1 Lollipop o menores
     public void cargarImagen(View view) {
         cargar();
     }
