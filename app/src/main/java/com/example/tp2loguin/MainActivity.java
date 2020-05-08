@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(registro);
     }
     public void iniciar(View v){
-        Intent iniciar = new Intent(this, Perfil.class);
+        Intent iniciar = new Intent(this, PerfilActivity.class);
         startActivity(iniciar);
     }
 
