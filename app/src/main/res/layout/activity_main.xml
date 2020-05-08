@@ -25,7 +25,7 @@
         android:layout_height="40dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/campoUsuario"
         android:layout_width="271dp"
         android:layout_height="79dp"
         android:layout_gravity="center_horizontal"
@@ -40,7 +40,7 @@
 
     <EditText
         android:hint="@string/contrasenia"
-        android:id="@+id/editText2"
+        android:id="@+id/campoContrasenia"
         android:layout_width="271dp"
         android:layout_height="79dp"
         android:layout_gravity="center_horizontal"
