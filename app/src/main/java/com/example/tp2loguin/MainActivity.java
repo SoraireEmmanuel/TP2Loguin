@@ -24,24 +24,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //final ConexionSQLiteHelper conex=new ConexionSQLiteHelper(MainActivity.this, "bd_usuario", null,1);
         cContrasenia=(EditText)findViewById(R.id.campoContrasenia);
         cUsuario=(EditText)findViewById(R.id.campoUsuario);
-
-
-
-
     }
+
     public void registrar(View v) {
         Intent registro = new Intent(this, Registro.class);
         startActivity(registro);
     }
+    /*intencion hacie el starActivity*/
     private void perfil(){
-        Intent iniciar = new Intent(this, PerfilActivity.class);
+        Intent iniciar = new Intent(this, Perfil.class);
         iniciar.putExtra("usuario", cUsuario.getText().toString());
         startActivity(iniciar);
     }
+    /*valida formulario*/
     public void iniciar(View v){
         Boolean validador;
         validador = consultarCampos();

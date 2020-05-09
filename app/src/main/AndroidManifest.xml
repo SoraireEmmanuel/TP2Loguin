@@ -23,8 +23,6 @@
         <activity android:name=".Registro" />
         <activity android:name=".Perfil" />
         <activity android:name=".PerfilActivity"/>
-        <activity android:name=".Todosperfiles"/>
-
     </application>
 
 </manifest>

@@ -1,16 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aqui va el perfil, la idea es que se tenga un mennu arriba para navegar de mi perfil a todos los perfiles"
-        tools:layout_editor_absoluteX="100dp"
-        android:textSize="40dp"
-        tools:layout_editor_absoluteY="319dp" />
+    <TabHost android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TabWidget android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@android:id/tabs" />
+
+            <FrameLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@android:id/tabcontent" >
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/imagen_no_disponible" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+
+                        />
+                    <LinearLayout
+
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal"
+                        >
+                    <TextView
+                        android:id="@+id/Nom"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:text="@string/nombre" />
+
+                        <Space
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                        android:layout_width="220dp"
+                        android:textSize="15sp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/nombrePerfil"
+                        android:text="Pepe"
+
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/ape"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/aoellido" />
+
+                        <Space
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/apellidoPerfil"
+                            android:layout_width="220dp"
+                            android:textSize="15sp"
+                            android:text="Argento"
+
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/usu"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/usuario" />
+
+                        <Space
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/usuarioPerfil"
+                            android:layout_width="220dp"
+                            android:textSize="15sp"
+                            android:text="89"
+
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/mail"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/mail" />
+
+                        <Space
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/emailPerfil"
+                            android:layout_width="170dp"
+                            android:textSize="15sp"
+                            android:text="easd@asfdads.asd"
+                            android:layout_marginRight="50dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/ro"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/rol" />
+
+                        <Space
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/rolPerfil"
+                            android:layout_width="220dp"
+                            android:textSize="15dp"
+                            android:text="Administrador"
+
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="211dp"
+                        android:layout_height="163dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/piramide" />
+                </LinearLayout>
+
+                <!-- tab 2 -->
+
+                <LinearLayout android:id="@+id/tab2"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView android:id="@+id/textView2"
+                        android:text="Contenido Tab 2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 </LinearLayout>

@@ -5,26 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/descripcion_persona"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descripcion de Rol:"
+        android:text="@string/usuario"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.798" />
+        app:layout_constraintVertical_bias="0.583" />
 
     <TextView
-        android:id="@+id/rol_persona"
+        android:id="@+id/usuarioMiPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rol:"
+        android:text="@string/rol"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -33,28 +34,13 @@
         app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintVertical_bias="0.729" />
 
     <TextView
-        android:id="@+id/nacimiento_persona"
+        android:id="@+id/mailMiPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fecha de Nacimiento:"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" />
-
-    <TextView
-        android:id="@+id/mail_persona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="E-mail:"
+        android:text="@string/mail"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -66,10 +52,10 @@
         app:layout_constraintVertical_bias="0.656" />
 
     <TextView
-        android:id="@+id/apellido_persona"
+        android:id="@+id/apellidoMiPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apellido:"
+        android:text="@string/aoellido"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -81,7 +67,7 @@
         app:layout_constraintVertical_bias="0.515" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imagenMiPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,10 +79,10 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/nombre_persona"
+        android:id="@+id/nombreMiPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre:"
+        android:text="@string/nombre"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -106,5 +92,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.447" />
+    <!--
+        <TextView
+            android:id="@+id/nombreMP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hola mundo"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="217dp" />
 
+            <TextView
+                android:id="@+id/apellidoMP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="196dp"
+                tools:layout_editor_absoluteY="296dp" />
+
+            <TextView
+                android:id="@+id/usuarioMP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="196dp"
+                tools:layout_editor_absoluteY="335dp" />
+
+            <TextView
+                android:id="@+id/mailMP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="196dp"
+                tools:layout_editor_absoluteY="377dp" />
+
+            <TextView
+                android:id="@+id/rolMP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="196dp"
+                tools:layout_editor_absoluteY="420dp" />
+        -->
 </androidx.constraintlayout.widget.ConstraintLayout>
