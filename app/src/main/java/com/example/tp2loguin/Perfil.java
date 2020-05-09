@@ -1,7 +1,9 @@
 package com.example.tp2loguin;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TabHost;
 
 public class Perfil extends Activity {
@@ -29,5 +31,13 @@ public class Perfil extends Activity {
         tabs.addTab(spec);
 
         tabs.setCurrentTab(0);
+
     }
+
+    public void irWeb(View v) {
+        Intent registro = new Intent(this, Internet.class);
+        startActivity(registro);
+    }
+
+
 }
