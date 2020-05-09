@@ -24,6 +24,11 @@ public class Usuario {
         this.foto = (Blob) foto;
     }
 
+    public Usuario( String emmanuel, String sorarire) {
+        this.apellido = sorarire;
+        this.nombre = emmanuel;
+    }
+
     public Integer getDni() {
         return dni;
     }

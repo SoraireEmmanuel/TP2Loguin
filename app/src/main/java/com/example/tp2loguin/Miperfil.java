@@ -17,6 +17,8 @@ public class Miperfil extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.miperfil,container,false);
 
-
     }
+
+
+
 }

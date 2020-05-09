@@ -1,33 +1,139 @@
 package com.example.tp2loguin;
 import android.app.Activity;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import com.example.tp2loguin.Adaptadores.AdapterUsuario;
+import com.example.tp2loguin.entidades.Usuario;
+import com.example.tp2loguin.utilidades.Utilidades;
+
+import java.net.URI;
+import java.util.ArrayList;
 
 public class Perfil extends Activity {
+    TextView nombre, apellido, usuarioDNI, eMail, rol;
+    ArrayList<Usuario> listDatos;
+    TextView nombreTdoso, apellidoTodos;
+    Integer dniTodos;
+    RecyclerView recycler;
+    ImageView rolImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil);
 
 
+        /*logica del tab*/
         Resources res = getResources();
-
         TabHost tabs=(TabHost)findViewById(android.R.id.tabhost);
         tabs.setup();
-
         TabHost.TabSpec spec=tabs.newTabSpec("mitab1");
         spec.setContent(R.id.tab1);
         spec.setIndicator("Mis Datos",
                 res.getDrawable(android.R.drawable.ic_btn_speak_now));
         tabs.addTab(spec);
-
         spec=tabs.newTabSpec("mitab2");
         spec.setContent(R.id.tab2);
         spec.setIndicator("Otros Usuarios",
                 res.getDrawable(android.R.drawable.ic_dialog_map));
         tabs.addTab(spec);
-
         tabs.setCurrentTab(0);
+
+        /*logica del perfil del usuario*/
+        Bundle bundle=getIntent().getExtras();
+        String usuario=bundle.getString("usuario");
+
+        nombre = (TextView)findViewById(R.id.nombrePerfil);
+        apellido = (TextView)findViewById(R.id.apellidoPerfil);
+        eMail=(TextView)findViewById(R.id.emailPerfil);
+        usuarioDNI=(TextView)findViewById(R.id.usuarioPerfil);
+        rol =(TextView)findViewById(R.id.rolPerfil);
+       cargarUsuario(usuario);
+
+        /*logica de todos los usuarios*/
+      recycler=findViewById(R.id.recyclerView);
+      recycler.setLayoutManager(new LinearLayoutManager(this));
+      cargarTodos();
+      AdapterUsuario adapter=new AdapterUsuario(listDatos);
+      recycler.setAdapter(adapter);
+
+      /*logica de Imagen del Rol*/
+
+      /*  rolImg = (ImageView)findViewById(R.id.imgRol);
+        imgRol();*/
     }
+
+    private void imgRol() {
+        switch (rol.getText().toString()){
+            case "CEO":
+             rolImg.setImageResource(R.drawable.ceo);
+                break;
+            case "Director":
+                rolImg.setImageResource(R.drawable.directores);
+             break;
+            case "Administrador":
+                rolImg.setImageResource(R.drawable.administradores);
+                break;
+            case "Jefe o Supervisor":
+                rolImg.setImageResource(R.drawable.supervisores);
+                break;
+            case "Empleado":
+                rolImg.setImageResource(R.drawable.empleados);
+                 break;
+        }
+    }
+
+    /*recupera todos los registros de la tabla usuario*/
+    private void cargarTodos(){
+        listDatos=new ArrayList<Usuario>();
+        final ConexionSQLiteHelper conex=new ConexionSQLiteHelper(getApplicationContext(), "bd_usuario", null,1);
+        SQLiteDatabase db = conex.getReadableDatabase();
+        String [] proyeccion = {Utilidades.CAMPO_DNI,Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_APELLIDO};
+        String selection = Utilidades.CAMPO_DNI + " = ?";
+        try{
+            Cursor c = db.query(Utilidades.TABLA_USUARIO, proyeccion,
+                    null , null, null, null, null);
+            c.moveToFirst();
+            listDatos.add(new Usuario( c.getString(1), c.getString(2)));
+           while(c.moveToNext()) {
+                listDatos.add(new Usuario( c.getString(1), c.getString(2)));
+            }
+//            Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            //          Toast.makeText(getApplicationContext(),"El usuario no existe", Toast.LENGTH_SHORT).show();
+        }
+    }
+/*consulta el usuario a la base de datos y lo carga*/
+    private void cargarUsuario(String usuario) {
+        final ConexionSQLiteHelper conex=new ConexionSQLiteHelper(getApplicationContext(), "bd_usuario", null,1);
+        SQLiteDatabase db = conex.getReadableDatabase();
+        String selection = Utilidades.CAMPO_DNI + " = ?";
+        String[] selectionArg = {usuario};
+        try{
+            Cursor c = db.query(Utilidades.TABLA_USUARIO, null,
+                    selection , selectionArg, null, null, null);
+            c.moveToFirst();
+            nombre.setText(c.getString(1));
+            apellido.setText(c.getString(2));
+            rol.setText(c.getString(3));
+            eMail.setText(c.getString(5));
+            usuarioDNI.setText(c.getString(0));
+   //        Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+     //       Toast.makeText(getApplicationContext(),"El usuario no existe", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

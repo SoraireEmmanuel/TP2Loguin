@@ -19,7 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     String contrasenia, usuario;
     EditText cContrasenia, cUsuario, bdContrasenia;
- //  SQLiteOpenHelper conex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

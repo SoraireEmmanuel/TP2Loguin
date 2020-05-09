@@ -10,13 +10,51 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tp2loguin.Entidades.Persona;
 import com.example.tp2loguin.R;
+import com.example.tp2loguin.entidades.Usuario;
 
 import java.util.ArrayList;
 
-public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.ViewHolder> implements View.OnClickListener {
+public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHolder> {
+    ArrayList<Usuario> listDatos;
 
+    public AdapterUsuario(ArrayList<Usuario> listDatos) {
+        this.listDatos = listDatos;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_personas,null,false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.asignarDatos(listDatos.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return listDatos.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView dato1, dato2;
+
+       public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            dato1=(TextView)itemView.findViewById(R.id.nombre_recicle);
+            dato2=(TextView)itemView.findViewById(R.id.apellido_recicle);
+        }
+
+        public void asignarDatos(Usuario usuario) {
+            dato1.setText(usuario.getNombre());
+            dato2.setText(usuario.getApellido());
+       }
+    }
+
+
+/*
     LayoutInflater inflater;
     ArrayList<Persona> model;
 
@@ -73,5 +111,5 @@ public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.ViewHold
             fechanacimiento=itemView.findViewById(R.id.fecha_nacimiento);
             imagen=itemView.findViewById(R.id.imagen_persona);
         }
-    }
+    }*/
 }

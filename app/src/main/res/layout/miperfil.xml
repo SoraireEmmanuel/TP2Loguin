@@ -1,6 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/imagen_no_disponible" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+
+        />
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/Nom"
+            android:layout_width="141dp"
+            android:layout_height="30dp"
+            android:text="@string/nombre"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="220dp"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombrePerfil"
+            android:text="Pepe"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ape"
+            android:layout_width="141dp"
+            android:layout_height="30dp"
+            android:text="@string/aoellido"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/apellidoPerfil"
+            android:layout_width="220dp"
+            android:textSize="15sp"
+            android:text="Argento"
+
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/usu"
+            android:layout_width="141dp"
+            android:layout_height="30dp"
+            android:text="@string/usuario"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usuarioPerfil"
+            android:layout_width="220dp"
+            android:textSize="15sp"
+            android:text="89"
+
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mail"
+            android:layout_width="141dp"
+            android:layout_height="30dp"
+            android:text="@string/mail"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/emailPerfil"
+            android:layout_width="170dp"
+            android:textSize="15sp"
+            android:text="easd@asfdads.asd"
+            android:layout_marginRight="50dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ro"
+            android:layout_width="142dp"
+            android:layout_height="30dp"
+            android:text="@string/rol"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rolPerfil"
+            android:layout_width="220dp"
+            android:textSize="15dp"
+            android:text="Administrador"
+
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="222dp"
+        android:layout_height="176dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/piramide" />
+</LinearLayout>
+
+
+
+
+
+<!--
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -92,7 +243,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.447" />
-    <!--
+
         <TextView
             android:id="@+id/nombreMP"
             android:layout_width="wrap_content"
@@ -137,5 +288,5 @@
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="196dp"
                 tools:layout_editor_absoluteY="420dp" />
-        -->
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->

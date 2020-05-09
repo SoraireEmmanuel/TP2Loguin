@@ -38,7 +38,7 @@ public class Registro extends Activity {
     EditText campoApellido;
     EditText campoContrasenia;
     EditText campoEmail;
-
+    String spinerText;
     private final String CARPETA_RAIZ="misImagenes/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
 
@@ -59,6 +59,7 @@ public class Registro extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item, opciones);
         spiner.setPrompt("Seleccione su Rol");
         spiner.setAdapter(adapter);
+
 
         //REGISTRO EL RESTO DE LOS CAMPOS PARA SU CARGA EN LA BASE DE DATOS
         campoDNI=(EditText)findViewById(R.id.usuarioDni);
@@ -83,7 +84,7 @@ public class Registro extends Activity {
         values.put(Utilidades.CAMPO_DNI,campoDNI.getText().toString());
         values.put(Utilidades.CAMPO_NOMBRE,campoNombre.getText().toString());
         values.put(Utilidades.CAMPO_APELLIDO,campoApellido.getText().toString());
-        values.put(Utilidades.CAMPO_ROL,spiner.getAdapter().toString());
+        values.put(Utilidades.CAMPO_ROL, (String) spiner.getSelectedItem());
         values.put(Utilidades.CAMPO_CONTRASENIA,campoContrasenia.getText().toString());
         values.put(Utilidades.CAMPO_EMAIL,campoEmail.getText().toString());
        // values.put(Utilidades.CAMPO_FOTO,imagen. recuperar el uri de la imagen);
