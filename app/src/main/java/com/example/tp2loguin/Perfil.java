@@ -22,7 +22,7 @@ import com.example.tp2loguin.utilidades.Utilidades;
 import java.net.URI;
 import java.util.ArrayList;
 
-public class Perfil extends Activity {
+public class Perfil extends Activity implements AdapterUsuario.ListClick{
     TextView nombre, apellido, usuarioDNI, eMail, rol;
     ArrayList<Usuario> listDatos;
     TextView nombreTdoso, apellidoTodos;
@@ -67,7 +67,7 @@ public class Perfil extends Activity {
       recycler=findViewById(R.id.recyclerView);
       recycler.setLayoutManager(new LinearLayoutManager(this));
       cargarTodos();
-      AdapterUsuario adapter=new AdapterUsuario(listDatos);
+      AdapterUsuario adapter=new AdapterUsuario(listDatos, this);
       recycler.setAdapter(adapter);
 
       /*logica de Imagen del Rol*/
@@ -128,4 +128,14 @@ private View.OnClickListener verRol = new View.OnClickListener() {
         }
     }
 
+    @Override
+    public void onListClick(String nombre, String apellido, int dni) {
+
+        Toast.makeText(getApplicationContext(),"Nombre y Apellido: "+nombre + " " + apellido , Toast.LENGTH_SHORT).show();
+        Intent ver = new Intent(this, DetalleTodosLosUsuarios.class);
+        ver.putExtra("nombre", nombre);
+        ver.putExtra("apellido", apellido);
+        ver.putExtra("dni", dni);
+        startActivity(ver);
+    }
 }
