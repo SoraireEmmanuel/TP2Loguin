@@ -1,11 +1,12 @@
 package com.example.tp2loguin;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ public class Perfil extends Activity {
     TextView nombreTdoso, apellidoTodos;
     Integer dniTodos;
     RecyclerView recycler;
-    ImageView rolImg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,27 +74,16 @@ public class Perfil extends Activity {
 
       /*  rolImg = (ImageView)findViewById(R.id.imgRol);
         imgRol();*/
+
     }
 
-    private void imgRol() {
-        switch (rol.getText().toString()){
-            case "CEO":
-             rolImg.setImageResource(R.drawable.ceo);
-                break;
-            case "Director":
-                rolImg.setImageResource(R.drawable.directores);
-             break;
-            case "Administrador":
-                rolImg.setImageResource(R.drawable.administradores);
-                break;
-            case "Jefe o Supervisor":
-                rolImg.setImageResource(R.drawable.supervisores);
-                break;
-            case "Empleado":
-                rolImg.setImageResource(R.drawable.empleados);
-                 break;
-        }
+    public void irWeb(View v) {
+        Intent registro = new Intent(this, Internet.class);
+        startActivity(registro);
     }
+
+
+
 
     /*recupera todos los registros de la tabla usuario*/
     private void cargarTodos(){
