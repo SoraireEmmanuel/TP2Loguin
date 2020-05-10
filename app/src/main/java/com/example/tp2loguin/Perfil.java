@@ -46,7 +46,7 @@ public class Perfil extends Activity {
         tabs.addTab(spec);
         spec=tabs.newTabSpec("mitab2");
         spec.setContent(R.id.tab2);
-        spec.setIndicator("Otros Usuarios",
+        spec.setIndicator("Todos los Usuarios",
                 res.getDrawable(android.R.drawable.ic_dialog_map));
         tabs.addTab(spec);
         tabs.setCurrentTab(0);

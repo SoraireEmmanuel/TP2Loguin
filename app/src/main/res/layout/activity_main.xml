@@ -29,7 +29,7 @@
         android:layout_width="271dp"
         android:layout_height="79dp"
         android:layout_gravity="center_horizontal"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:autofillHints="false"
         android:hint="@string/usuario"
         tools:ignore="LabelFor" />

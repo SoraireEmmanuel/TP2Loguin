@@ -33,8 +33,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="379dp"
+                        android:layout_height="235dp"
                         android:layout_gravity="center"
                         android:src="@drawable/imagen_no_disponible" />
 
@@ -43,55 +43,60 @@
                         android:layout_height="10dp"
                         />
 
+<!--<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">-->
                              <TextView
                             android:id="@+id/Nom"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Nombre: "
-                            android:textSize="15dp"
+                            android:textSize="25dp"
                             android:textStyle="bold"
-                            tools:layout_editor_absoluteX="117dp"
-                            tools:layout_editor_absoluteY="35dp"
-                            tools:ignore="MissingConstraints" />
+                       />
 
                         <TextView
                             android:id="@+id/nombrePerfil"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pepe"
-                            android:textSize="15sp"
-                            tools:layout_editor_absoluteX="196dp"
-                            tools:layout_editor_absoluteY="35dp"
-                            tools:ignore="MissingConstraints" />
-
-                        <TextView
+                            android:textSize="35dp" />
+<!--</LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+    -->                    <TextView
                             android:id="@+id/ape"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Apellido: "
-                            android:textSize="15dp"
+                            android:textSize="25dp"
                             android:textStyle="bold"
-                            tools:layout_editor_absoluteX="117dp"
-                            tools:layout_editor_absoluteY="64dp"
-                            tools:ignore="MissingConstraints" />
+                           />
 
                         <TextView
                             android:id="@+id/apellidoPerfil"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Argento"
-
-                            android:textSize="15sp"
+                            android:textSize="35dp"
                             tools:layout_editor_absoluteX="196dp"
                             tools:layout_editor_absoluteY="64dp"
                             tools:ignore="MissingConstraints" />
+       <!--             </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+           -->            <TextView
 
-                        <TextView
                             android:id="@+id/usu"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Usuario: "
-                            android:textSize="15dp"
+                            android:textSize="25dp"
                             android:textStyle="bold"
                             tools:layout_editor_absoluteX="117dp"
                             tools:layout_editor_absoluteY="6dp" />
@@ -101,17 +106,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="89"
-
-                            android:textSize="15sp"
+                            android:textSize="35dp"
                             tools:layout_editor_absoluteX="196dp"
                             tools:layout_editor_absoluteY="6dp" />
-
-                        <TextView
+            <!--        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+        -->                <TextView
                             android:id="@+id/mail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="E-Mail: "
-                            android:textSize="15dp"
+                            android:textSize="25dp"
                             android:textStyle="bold"
                             tools:layout_editor_absoluteX="129dp"
                             tools:layout_editor_absoluteY="94dp" />
@@ -121,38 +129,34 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="easd@asfdads.asd"
-                            android:textSize="15sp"
+                            android:textSize="30dp"
                             tools:layout_editor_absoluteX="196dp"
                             tools:layout_editor_absoluteY="94dp" />
-
-                        <TextView
+           <!--         </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+               -->         <TextView
                             android:id="@+id/ro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rol: "
-                            android:textSize="15dp"
+                            android:textSize="25dp"
                             android:textStyle="bold"
                             tools:layout_editor_absoluteX="150dp"
                             tools:layout_editor_absoluteY="123dp" />
 
-                        <TextView
-                            android:id="@+id/rolPerfil"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Administrador"
-
-                            android:textSize="15dp"
-                            tools:layout_editor_absoluteX="196dp"
-                            tools:layout_editor_absoluteY="123dp" />
-
-
-
-                    <ImageView
-                        android:id="@+id/imgRol"
-                        android:layout_width="match_parent"
-                        android:layout_height="199dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/piramide" />
+                    <TextView
+                        android:id="@+id/rolPerfil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Administrador"
+                        android:textColor="#8114DC"
+                        android:textSize="35dp"
+                        tools:layout_editor_absoluteX="196dp"
+                        tools:layout_editor_absoluteY="123dp" />
+                <!--    </LinearLayout>
+-->
                 </LinearLayout>
 
                 <!-- tab 2 -->
