@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TP2Loguin</string>
+    <string name="app_name">RegApp</string>
 
     /*loguin*/
     <string name="inicio">Bienvenido</string>

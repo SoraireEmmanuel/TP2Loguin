@@ -15,22 +15,58 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Internet"/>
+
         <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+        <activity android:name=".Registro"
+            android:label="Registrarse"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registro"
-            android:screenOrientation="portrait" />
+
+
         <activity android:name=".Perfil"
-            android:screenOrientation="portrait"/>
+            android:label="Mi Perfil"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".PerfilActivity"
             android:screenOrientation="portrait"/>
+
         <activity android:name=".DetalleTodosLosUsuarios"
-            android:screenOrientation="portrait"/>
+            android:label="Detalle"
+            android:parentActivityName=".PerfilActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Internet"
+            android:label="Web - RegApp"
+            android:parentActivityName=".PerfilActivity"
+            android:screenOrientation="portrait" ></activity>
+
 
     </application>
 

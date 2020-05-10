@@ -25,10 +25,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.tp2loguin.utilidades.Utilidades;
 
 import java.io.File;
-public class Registro extends Activity {
+public class Registro extends AppCompatActivity {
 
     ImageView imagen;
     Spinner spiner;
@@ -49,6 +52,10 @@ public class Registro extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
+
+        //para el boton atras - vuelve a menu de inicio
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //REGISTRO LA IMAGEN DEL FORMULARIO EN LA CONSTANTE imagen
         imagen=(ImageView)findViewById(R.id.imagenId);

@@ -11,6 +11,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +24,7 @@ import com.example.tp2loguin.utilidades.Utilidades;
 import java.net.URI;
 import java.util.ArrayList;
 
-public class Perfil extends Activity implements AdapterUsuario.ListClick{
+public class Perfil extends AppCompatActivity implements AdapterUsuario.ListClick{
     TextView nombre, apellido, usuarioDNI, eMail, rol;
     ArrayList<Usuario> listDatos;
     TextView nombreTdoso, apellidoTodos;
@@ -34,6 +36,10 @@ public class Perfil extends Activity implements AdapterUsuario.ListClick{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil);
+
+        //boton atras - vuelve a mainactivity, es decir a inicio
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
         /*logica del tab*/

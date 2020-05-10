@@ -10,15 +10,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp2loguin.utilidades.Utilidades;
 
-public class DetalleTodosLosUsuarios extends Activity {
+public class DetalleTodosLosUsuarios extends AppCompatActivity {
     TextView nombre, apellido, usuarioDNI, eMail, rol;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.detalletodoslosusuarios);
+
+       //para el boton atras - vuelve a perfil
+       ActionBar actionBar=getSupportActionBar();
+       actionBar.setDisplayShowTitleEnabled(true);
+
        nombre = (TextView)findViewById(R.id.nombrePerfil);
        apellido = (TextView)findViewById(R.id.apellidoPerfil);
        eMail=(TextView)findViewById(R.id.emailPerfil);

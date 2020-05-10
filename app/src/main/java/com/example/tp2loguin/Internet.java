@@ -1,5 +1,6 @@
 package com.example.tp2loguin;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -17,6 +18,11 @@ public class Internet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internet);
+
+        //para el boton atras - vuelve a perfil
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(true);
+
 
         Bundle bundle=getIntent().getExtras();
         String rol=bundle.getString("rol");
