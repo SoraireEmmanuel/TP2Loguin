@@ -74,14 +74,16 @@ public class Perfil extends Activity {
 
       /*  rolImg = (ImageView)findViewById(R.id.imgRol);
         imgRol();*/
-
+    rol.setOnClickListener(verRol);
     }
-
-    public void irWeb(View v) {
-        Intent registro = new Intent(this, Internet.class);
-        startActivity(registro);
+private View.OnClickListener verRol = new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent web = new Intent(Perfil.this, Internet.class);
+        web.putExtra("rol", rol.getText().toString());
+        startActivity(web);
     }
-
+};
 
 
 
@@ -96,9 +98,9 @@ public class Perfil extends Activity {
             Cursor c = db.query(Utilidades.TABLA_USUARIO, proyeccion,
                     null , null, null, null, null);
             c.moveToFirst();
-            listDatos.add(new Usuario( c.getString(1), c.getString(2)));
+            listDatos.add(new Usuario( c.getInt(0),c.getString(1), c.getString(2)));
            while(c.moveToNext()) {
-                listDatos.add(new Usuario( c.getString(1), c.getString(2)));
+                listDatos.add(new Usuario(c.getInt(0), c.getString(1), c.getString(2)));
             }
 //            Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
         }catch (Exception e){

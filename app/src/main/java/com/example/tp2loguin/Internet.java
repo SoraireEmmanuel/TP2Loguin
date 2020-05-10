@@ -10,13 +10,17 @@ import android.webkit.WebViewClient;
 public class Internet extends AppCompatActivity {
 
     //url que se carga en el visor
-    String rol ="Administrador";
+
     String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internet);
+
+        Bundle bundle=getIntent().getExtras();
+        String rol=bundle.getString("rol");
+
 
         switch (rol){
             case "CEO": url = "https://es.wikipedia.org/wiki/Director_ejecutivo";

@@ -32,7 +32,26 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical">
+                <!--        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layoutginBottom="20dp">
 
+                       <TextView
+                                android:id="@+id/usuario_persona"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nombre: "
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/usuario_recicle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2"
+                                android:textStyle="bold" />
+                        </LinearLayout>-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
