@@ -18,10 +18,16 @@
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="10dp"
+            android:layout_height="20dp"
             />
-
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/Nom"
             android:layout_width="wrap_content"
@@ -39,8 +45,9 @@
             android:textSize="35dp" />
         <TextView
         android:id="@+id/ape"
+
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="Apellido: "
         android:textSize="25dp"
         android:textStyle="bold"
@@ -56,7 +63,7 @@
         <TextView
         android:id="@+id/usu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="Usuario: "
         android:textSize="25dp"
         android:textStyle="bold"
@@ -72,7 +79,7 @@
         <TextView
         android:id="@+id/mail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="E-Mail: "
         android:textSize="25dp"
         android:textStyle="bold"
@@ -89,7 +96,7 @@
            <TextView
         android:id="@+id/ro"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="Rol: "
         android:textSize="25dp"
         android:textStyle="bold"
@@ -103,7 +110,8 @@
             android:textColor="#8114DC"
             android:textSize="35dp"
          />
-
+    </LinearLayout>
+</ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
