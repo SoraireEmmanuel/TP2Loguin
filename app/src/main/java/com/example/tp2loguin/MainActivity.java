@@ -32,14 +32,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registrar(View v) {
+        limpiar();
         Intent registro = new Intent(this, Registro.class);
         startActivity(registro);
     }
     /*intencion hacie el starActivity*/
     private void perfil(){
+
         Intent iniciar = new Intent(this, Perfil.class);
         iniciar.putExtra("usuario", cUsuario.getText().toString());
-        startActivity(iniciar);
+        limpiar();
+       startActivity(iniciar);
     }
     /*valida formulario*/
     public void iniciar(View v){

@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp2loguin.utilidades.Utilidades;
 
+import java.io.ByteArrayInputStream;
+
 public class DetalleTodosLosUsuarios extends AppCompatActivity {
     TextView nombre, apellido, usuarioDNI, eMail, rol;
+    ImageView imagen;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
@@ -31,6 +37,7 @@ public class DetalleTodosLosUsuarios extends AppCompatActivity {
        eMail=(TextView)findViewById(R.id.emailPerfil);
        usuarioDNI=(TextView)findViewById(R.id.usuarioPerfil);
        rol =(TextView)findViewById(R.id.rolPerfil);
+       imagen=(ImageView)findViewById(R.id.imgPerfil);
 
        Bundle bundle=getIntent().getExtras();
        String bundleNombre=bundle.getString("nombre");
@@ -50,6 +57,11 @@ public class DetalleTodosLosUsuarios extends AppCompatActivity {
            rol.setText(c.getString(3));
            eMail.setText(c.getString(5));
            usuarioDNI.setText(c.getString(0));
+           byte[] img = c.getBlob(6);
+
+           ByteArrayInputStream imageStream = new ByteArrayInputStream(img);
+           Bitmap image = BitmapFactory.decodeStream(imageStream);
+           imagen.setImageBitmap(image);
           //        Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
        }catch (Exception e){
             //      Toast.makeText(getApplicationContext(),"El usuario no existe", Toast.LENGTH_SHORT).show();

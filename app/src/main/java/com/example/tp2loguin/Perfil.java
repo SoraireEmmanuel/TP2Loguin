@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,16 +24,18 @@ import com.example.tp2loguin.Adaptadores.AdapterUsuario;
 import com.example.tp2loguin.entidades.Usuario;
 import com.example.tp2loguin.utilidades.Utilidades;
 
+import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.util.ArrayList;
 
 public class Perfil extends AppCompatActivity implements AdapterUsuario.ListClick{
     TextView nombre, apellido, usuarioDNI, eMail, rol;
+    ImageView imagen;
     ArrayList<Usuario> listDatos;
     TextView nombreTdoso, apellidoTodos;
     Integer dniTodos;
     RecyclerView recycler;
-
+    byte[] img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,7 @@ public class Perfil extends AppCompatActivity implements AdapterUsuario.ListClic
         eMail=(TextView)findViewById(R.id.emailPerfil);
         usuarioDNI=(TextView)findViewById(R.id.usuarioPerfil);
         rol =(TextView)findViewById(R.id.rolPerfil);
+        imagen=(ImageView)findViewById(R.id.imgPerfil);
        cargarUsuario(usuario);
 
         /*logica de todos los usuarios*/
@@ -128,7 +134,13 @@ private View.OnClickListener verRol = new View.OnClickListener() {
             rol.setText(c.getString(3));
             eMail.setText(c.getString(5));
             usuarioDNI.setText(c.getString(0));
-   //        Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
+            img = c.getBlob(6);
+
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(img);
+            Bitmap image = BitmapFactory.decodeStream(imageStream);
+            imagen.setImageBitmap(image);
+
+  //        Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
      //       Toast.makeText(getApplicationContext(),"El usuario no existe", Toast.LENGTH_SHORT).show();
         }

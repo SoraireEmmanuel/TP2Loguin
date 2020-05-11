@@ -92,10 +92,10 @@ public class Registro extends AppCompatActivity {
     }
 
     private void resgistrarUsuario() {
-        // setImgageURI(Uri uri), establece el contenido del imageView en el url
-
-
-
+        // transforma el bit map en arreglo de byte
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        imgByte.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        byte[] img = bos.toByteArray();
 
         ConexionSQLiteHelper conex = new ConexionSQLiteHelper(this, "bd_usuario", null, 1);
         SQLiteDatabase db=conex.getWritableDatabase();
@@ -107,7 +107,8 @@ public class Registro extends AppCompatActivity {
         values.put(Utilidades.CAMPO_ROL, (String) spiner.getSelectedItem());
         values.put(Utilidades.CAMPO_CONTRASENIA,campoContrasenia.getText().toString());
         values.put(Utilidades.CAMPO_EMAIL,campoEmail.getText().toString());
-       // values.put(Utilidades.CAMPO_FOTO,imagen. recuperar el uri de la imagen);
+        values.put(Utilidades.CAMPO_FOTO, img);
+      // values.put(Utilidades.CAMPO_FOTO,imagen. recuperar el uri de la imagen);
 
         Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_DNI,values);
 
@@ -170,12 +171,6 @@ public class Registro extends AppCompatActivity {
                 case COD_SELECCIONADA:
                     Uri miPath=data.getData();
                     imagen.setImageURI(miPath);
-                    try {
-                        imgByte= MediaStore.Images.Media.getBitmap(this.getContentResolver(), miPath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
                     break;
                 case COD_FOTO:
                     MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
@@ -185,13 +180,41 @@ public class Registro extends AppCompatActivity {
                         }
                     });
                     Bitmap bitmap= BitmapFactory.decodeFile(path);
-                   //imgByte = BitmapFactory.decodeFile(path);
                     imagen.setImageBitmap(bitmap);
+                    imgByte= bitmap;
+                    break;
+            }
+        }
+    }
 
+   /* protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case COD_SELECCIONADA:
+                    Uri miPath = data.getData();
+                    imagen.setImageURI(miPath);
+                    try {
+                        imgByte = MediaStore.Images.Media.getBitmap(this.getContentResolver(), miPath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                case COD_FOTO:
+                    MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                        @Override
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i("Ruta de almacenamiento", "Path: " + path);
+                        }
+                    });
+                    Bitmap bitmap = BitmapFactory.decodeFile(path);
+                    //imgByte = BitmapFactory.decodeFile(path);
+                    imagen.setImageBitmap(bitmap);
 
 
                     break;
             }
         }
-    }
+    }*/
 }
