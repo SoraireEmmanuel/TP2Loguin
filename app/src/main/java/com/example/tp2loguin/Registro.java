@@ -50,6 +50,7 @@ public class Registro extends AppCompatActivity {
     EditText campoEmail;
     String spinerText;
     Bitmap imgByte;
+    Boolean bandera=false;
 
     private final String CARPETA_RAIZ="misImagenes/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
@@ -68,8 +69,6 @@ public class Registro extends AppCompatActivity {
 
         //REGISTRO LA IMAGEN DEL FORMULARIO EN LA CONSTANTE imagen
         imagen=(ImageView)findViewById(R.id.imagenId);
-    //   imagen.buildDrawingCache();
-   //     imgByte = imagen.getDrawingCache();
 
         //REGISTRO EL SPINNER EN LA VARIABLE spiner PARA MANIPULAR SI VISUALIZACION
         spiner=(Spinner)findViewById(R.id.spinner);
@@ -78,23 +77,22 @@ public class Registro extends AppCompatActivity {
         spiner.setPrompt("Seleccione su Rol");
         spiner.setAdapter(adapter);
 
-
         //REGISTRO EL RESTO DE LOS CAMPOS PARA SU CARGA EN LA BASE DE DATOS
         campoDNI=(EditText)findViewById(R.id.usuarioDni);
         campoNombre = (EditText)findViewById(R.id.nombre);
         campoApellido = (EditText)findViewById(R.id.apellido);
         campoContrasenia =(EditText)findViewById(R.id.contrasenia);
         campoEmail = (EditText)findViewById(R.id.email);
-
        }
 
     //metoos para la insercion en base de dato de un nuevo usuario
 
     public void onClick(View view){
-        resgistrarUsuario();
+        if(bandera) {registrarUsuario();}
+        else{Toast.makeText(getApplicationContext(),"Se tiene que cargar una imagen para registrarse",Toast.LENGTH_SHORT).show();}
     }
 
-    private void resgistrarUsuario() {
+    private void registrarUsuario() {
         // transforma el bit map en arreglo de byte
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         imgByte.compress(Bitmap.CompressFormat.JPEG, 100, bos);
@@ -111,7 +109,6 @@ public class Registro extends AppCompatActivity {
         values.put(Utilidades.CAMPO_CONTRASENIA,campoContrasenia.getText().toString());
         values.put(Utilidades.CAMPO_EMAIL,campoEmail.getText().toString());
         values.put(Utilidades.CAMPO_FOTO, img);
-      // values.put(Utilidades.CAMPO_FOTO,imagen. recuperar el uri de la imagen);
 
         Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_DNI,values);
 
@@ -121,7 +118,7 @@ public class Registro extends AppCompatActivity {
 
     //metodos para la carga de foto para versiones de android 5.1 Lollipop o menores
     public void cargarImagen(View view) {
-        cargar();
+      cargar();
     }
 
     private void cargar(){
@@ -166,6 +163,7 @@ public class Registro extends AppCompatActivity {
         startActivityForResult(intent,COD_FOTO);
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -174,13 +172,12 @@ public class Registro extends AppCompatActivity {
                 case COD_SELECCIONADA:
                     Uri miPath=data.getData();
                     imagen.setImageURI(miPath);
-                 //necesito transformar mi foto en un BitMap
                     try {
                         imgByte = MediaStore.Images.Media.getBitmap(this.getContentResolver(), miPath);
+                        bandera=true;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                     break;
                 case COD_FOTO:
                     MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
@@ -192,39 +189,10 @@ public class Registro extends AppCompatActivity {
                     Bitmap bitmap= BitmapFactory.decodeFile(path);
                     imagen.setImageBitmap(bitmap);
                     imgByte= bitmap;
+                    bandera=true;
                     break;
             }
         }
     }
 
-   /* protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case COD_SELECCIONADA:
-                    Uri miPath = data.getData();
-                    imagen.setImageURI(miPath);
-                    try {
-                        imgByte = MediaStore.Images.Media.getBitmap(this.getContentResolver(), miPath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    break;
-                case COD_FOTO:
-                    MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                        @Override
-                        public void onScanCompleted(String path, Uri uri) {
-                            Log.i("Ruta de almacenamiento", "Path: " + path);
-                        }
-                    });
-                    Bitmap bitmap = BitmapFactory.decodeFile(path);
-                    //imgByte = BitmapFactory.decodeFile(path);
-                    imagen.setImageBitmap(bitmap);
-
-
-                    break;
-            }
-        }
-    }*/
 }
