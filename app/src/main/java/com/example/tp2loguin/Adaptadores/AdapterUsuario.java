@@ -1,6 +1,8 @@
 package com.example.tp2loguin.Adaptadores;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tp2loguin.R;
 import com.example.tp2loguin.entidades.Usuario;
+import com.example.tp2loguin.utilidades.Utilidades;
 
+import java.io.ByteArrayInputStream;
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHolder> {
@@ -67,7 +72,6 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
             dato3.setText(String.valueOf(dni));
 
         }
-
         @Override
         public void onClick(View v) {
             String nombre = dato1.getText().toString();

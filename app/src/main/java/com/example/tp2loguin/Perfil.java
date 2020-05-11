@@ -110,8 +110,8 @@ private View.OnClickListener verRol = new View.OnClickListener() {
             Cursor c = db.query(Utilidades.TABLA_USUARIO, proyeccion,
                     null , null, null, null, null);
             c.moveToFirst();
-            listDatos.add(new Usuario( c.getInt(0),c.getString(1), c.getString(2)));
-           while(c.moveToNext()) {
+            listDatos.add(new Usuario( c.getInt(0),c.getString(1), c.getString(2)) );
+          while(c.moveToNext()) {
                 listDatos.add(new Usuario(c.getInt(0), c.getString(1), c.getString(2)));
             }
 //            Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
@@ -148,12 +148,12 @@ private View.OnClickListener verRol = new View.OnClickListener() {
 
     @Override
     public void onListClick(String nombre, String apellido, int dni) {
-
         Toast.makeText(getApplicationContext(),"Nombre y Apellido: "+nombre + " " + apellido , Toast.LENGTH_SHORT).show();
         Intent ver = new Intent(this, DetalleTodosLosUsuarios.class);
         ver.putExtra("nombre", nombre);
         ver.putExtra("apellido", apellido);
         ver.putExtra("dni", dni);
+
         startActivity(ver);
     }
 }

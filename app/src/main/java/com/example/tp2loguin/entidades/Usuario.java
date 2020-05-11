@@ -12,22 +12,28 @@ public class Usuario {
     private String rol;
     private String contrasenia;
     private String eMail;
-    private Blob foto;
+    private byte[] foto;
 
-    public Usuario(Integer dni, String nombre, String apellido, String rol, String contrasenia, String eMail, ImageView foto) {
+    public Usuario(Integer dni, String nombre, String apellido, String rol, String contrasenia, String eMail, byte[] foto) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rol = rol;
         this.contrasenia = contrasenia;
         this.eMail = eMail;
-        this.foto = (Blob) foto;
+        this.foto =  foto;
     }
 
     public Usuario( Integer usuario, String nombre, String apellido) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = usuario;
+    }
+    public Usuario( Integer usuario, String nombre, String apellido, byte[] foto) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.dni = usuario;
+        this.foto = foto;
     }
 
     public Integer getDni() {
@@ -78,11 +84,11 @@ public class Usuario {
         this.eMail = eMail;
     }
 
-    public Blob getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(Blob foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 }
