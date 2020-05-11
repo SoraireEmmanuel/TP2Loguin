@@ -30,7 +30,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp2loguin.utilidades.Utilidades;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 public class Registro extends AppCompatActivity {
 
     ImageView imagen;
@@ -42,6 +49,7 @@ public class Registro extends AppCompatActivity {
     EditText campoContrasenia;
     EditText campoEmail;
     String spinerText;
+    Bitmap imgByte;
     private final String CARPETA_RAIZ="misImagenes/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
 
@@ -84,6 +92,11 @@ public class Registro extends AppCompatActivity {
     }
 
     private void resgistrarUsuario() {
+        // setImgageURI(Uri uri), establece el contenido del imageView en el url
+
+
+
+
         ConexionSQLiteHelper conex = new ConexionSQLiteHelper(this, "bd_usuario", null, 1);
         SQLiteDatabase db=conex.getWritableDatabase();
 
@@ -157,6 +170,12 @@ public class Registro extends AppCompatActivity {
                 case COD_SELECCIONADA:
                     Uri miPath=data.getData();
                     imagen.setImageURI(miPath);
+                    try {
+                        imgByte= MediaStore.Images.Media.getBitmap(this.getContentResolver(), miPath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                     break;
                 case COD_FOTO:
                     MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
@@ -166,7 +185,11 @@ public class Registro extends AppCompatActivity {
                         }
                     });
                     Bitmap bitmap= BitmapFactory.decodeFile(path);
+                   //imgByte = BitmapFactory.decodeFile(path);
                     imagen.setImageBitmap(bitmap);
+
+
+
                     break;
             }
         }
