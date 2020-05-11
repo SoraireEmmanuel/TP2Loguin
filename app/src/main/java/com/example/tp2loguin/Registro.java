@@ -50,6 +50,7 @@ public class Registro extends AppCompatActivity {
     EditText campoEmail;
     String spinerText;
     Bitmap imgByte;
+
     private final String CARPETA_RAIZ="misImagenes/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
 
@@ -67,6 +68,8 @@ public class Registro extends AppCompatActivity {
 
         //REGISTRO LA IMAGEN DEL FORMULARIO EN LA CONSTANTE imagen
         imagen=(ImageView)findViewById(R.id.imagenId);
+    //   imagen.buildDrawingCache();
+   //     imgByte = imagen.getDrawingCache();
 
         //REGISTRO EL SPINNER EN LA VARIABLE spiner PARA MANIPULAR SI VISUALIZACION
         spiner=(Spinner)findViewById(R.id.spinner);
@@ -171,6 +174,13 @@ public class Registro extends AppCompatActivity {
                 case COD_SELECCIONADA:
                     Uri miPath=data.getData();
                     imagen.setImageURI(miPath);
+                 //necesito transformar mi foto en un BitMap
+                    try {
+                        imgByte = MediaStore.Images.Media.getBitmap(this.getContentResolver(), miPath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                     break;
                 case COD_FOTO:
                     MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
