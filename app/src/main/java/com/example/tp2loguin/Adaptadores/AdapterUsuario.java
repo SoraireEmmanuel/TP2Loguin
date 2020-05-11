@@ -54,6 +54,8 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView dato1, dato2, dato3;
+        byte[] img;
+        ImageView imagen;
         int dni;
 
         public ViewHolder(@NonNull View itemView) {
@@ -61,6 +63,7 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
             dato1 = (TextView) itemView.findViewById(R.id.nombre_recicle);
             dato2 = (TextView) itemView.findViewById(R.id.apellido_recicle);
             dato3 = (TextView) itemView.findViewById(R.id.usuario_recicle);
+            imagen = (ImageView) itemView.findViewById(R.id.imagen_persona);
             //dni=(Number) itemView.findViewById(R.id.usuario_recicle);
             itemView.setOnClickListener(this);
         }
@@ -70,6 +73,10 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
             dato2.setText(usuario.getApellido());
             dni = usuario.getDni();
             dato3.setText(String.valueOf(dni));
+            img = usuario.getFoto();
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(img);
+            Bitmap image = BitmapFactory.decodeStream(imageStream);
+            imagen.setImageBitmap(image);
 
         }
         @Override

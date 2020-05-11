@@ -104,15 +104,15 @@ private View.OnClickListener verRol = new View.OnClickListener() {
         listDatos=new ArrayList<Usuario>();
         final ConexionSQLiteHelper conex=new ConexionSQLiteHelper(getApplicationContext(), "bd_usuario", null,1);
         SQLiteDatabase db = conex.getReadableDatabase();
-        String [] proyeccion = {Utilidades.CAMPO_DNI,Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_APELLIDO};
+        String [] proyeccion = {Utilidades.CAMPO_DNI,Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_APELLIDO,Utilidades.CAMPO_FOTO};
         String selection = Utilidades.CAMPO_DNI + " = ?";
         try{
             Cursor c = db.query(Utilidades.TABLA_USUARIO, proyeccion,
                     null , null, null, null, null);
             c.moveToFirst();
-            listDatos.add(new Usuario( c.getInt(0),c.getString(1), c.getString(2)) );
+            listDatos.add(new Usuario( c.getInt(0),c.getString(1), c.getString(2),c.getBlob(3)) );
           while(c.moveToNext()) {
-                listDatos.add(new Usuario(c.getInt(0), c.getString(1), c.getString(2)));
+                listDatos.add(new Usuario(c.getInt(0), c.getString(1), c.getString(2),c.getBlob(3)));
             }
 //            Toast.makeText(getApplicationContext(),"El usuario  existe", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
